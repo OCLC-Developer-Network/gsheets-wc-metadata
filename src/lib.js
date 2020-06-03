@@ -35,13 +35,6 @@ function getBasicMetadata (result) {
 	title = title.replace(/\s\/+$/, "")
 
 	let author = record.contributor.creators[0].secondName.text + ', ' + record.contributor.creators[0].firstName.text
-
-	let isbns = record.identifier.isbns
-	
-	let isbnList = ""
-	if (isbns && isbns.length > 0) {
-		isbnList = isbns.join('|')
-	}
 	
 	let mergedOclcNumbers = record.identifier.mergedOclcNumbers
 	
@@ -55,7 +48,6 @@ function getBasicMetadata (result) {
 	bib.oclcNumber = oclcNumber
 	bib.title =  title
 	bib.author = author
-	bib.isbns =  isbnList
 	bib.mergedOCNs = mergedOCNList		    		
 
     return bib
