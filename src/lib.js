@@ -1,6 +1,3 @@
-const xpath = require('xpath')
-const dom = require('xmldom').DOMParser
-
 function createRequestURL(functionName, oclcNumber, filterType, filterValue) {
 	const baseURL = 'https://worldcat.org'
 	const metadataBaseURL = 'https://americas.metadata.api.oclc.org/worldcat/search/v1'
@@ -10,7 +7,7 @@ function createRequestURL(functionName, oclcNumber, filterType, filterValue) {
 	} else if (functionName == 'getHoldingStatus'){
 		url = baseURL + '/ih/checkholdings?oclcNumber=' + oclcNumber; 
 	} else if (functionName == 'getMetadata'){
-		url = baseURL + '/bib' + oclcNumber;
+		url = baseURL + '/bib/data/' + oclcNumber;
 	} else if (functionName == 'getHoldingsCount'){
 		url = metadataBaseURL + '/bibs-summary-holdings?oclcNumber=' + oclcNumber + '&' + filterType + '=' + filterValue;
 	} else if (functionName == 'checkRetentions' || functionName == 'getRetentions'){
@@ -20,41 +17,6 @@ function createRequestURL(functionName, oclcNumber, filterType, filterValue) {
 	}
 
 	return url
-}
-
-// rewrite to use standard library
-function parseMARCFromXML(responseXML){    
-    var doc = new dom().parseFromString(responseXML)
-	var select = xpath.useNamespaces({"atom": "http://www.w3.org/2005/Atom", "rb": "http://worldcat.org/rb"});
-    var marc = select("//atom:content/rb:response]", doc)[0].firstChild.data
-    return marc
-}
-
-
-function parseMarcData(record){
-	
-	var doc = new dom().parseFromString(record)
-	var select = xpath.useNamespaces({"marc": "http://www.loc.gov/MARC21/slim"});
-    
-    let oclcNumber = select("//marc:controlfield[@tag='001']", doc)[0].firstChild.data
-	    
-	let title = select("//marc:datafield[starts-with(@tag, '24')]/marc:subfield[@code='a']", doc)[0].firstChild.data
-	    
-	let author = select("//marc:datafield[@tag='100'or @tag='110'or @tag='700' or @tag='710']/marc:subfield[@code='a']", doc)[0].firstChild.data  
-	
-	//let isbnListNodes = select("//marc:datafield[@tag='020']/marc:subfield[@tag='a']", doc)
-	
-	//let isbnList = [];
-	//while(node = isbnListNodes.iterateNext()) {
-	//	isbnList.push(node.firstChild.data);
-	//}
-	    
-	let bib = new Object(); 
-	bib.oclcNumber = oclcNumber
-	bib.title =  title
-	bib.author = author
-	//bib.isbns = isbnList.join(', ')
-	return bib;
 }
 
 function parseBasicMetadata(result) {
@@ -69,9 +31,64 @@ function parseBasicMetadata(result) {
 	bib.generalFormat = record.generalFormat
 	bib.specificFormat = record.specificFormat
 	bib.edition = record.edition
-	bib.publisher = bib.publisher
-	bib.catalogingAgency = bib.catalogingInfo.catalogingAgency
-	bib.mergedOCNs = mergedOclcNumbers		    		
+	bib.publisher = record.publisher
+	bib.catalogingAgency = record.catalogingInfo.catalogingAgency
+	bib.mergedOCNs = record.mergedOclcNumbers		    		
 
     return bib
+}
+
+function getCurrentOCLCNumber(result){
+	let currentOCN_results = JSON.parse(result);
+	let current_OCLCNumber = currentOCN_results.entry[0].currentOclcNumber;
+	return current_OCLCNumber
+}
+
+function getHoldingStatus(result){
+	let status_results = JSON.parse(result);
+	let holdingStatus = ""
+    if (status_results.isHoldingSet == true) {
+    	holdingStatus = "TRUE"
+    } else {
+    	holdingStatus = "FALSE"
+    }
+	return holdingStatus
+}
+
+function getHoldingCount(result){
+	let holding_count_results = JSON.parse(result);
+
+	let holding_count = "";
+	if (holding_count_results.numberOfRecords > 1) {
+		let recordNodes = holding_count_results.briefRecords;
+		let holdingCounts = recordNodes.map(record => record.institutionHolding.totalHoldingCount);
+		holding_count = holdingCounts.reduce((a,b) => a + b, 0)
+		
+	} else {
+		holding_count = holding_count_results.briefRecords[0].institutionHolding.totalHoldingCount;
+	}
+	
+	return holding_count;
+}
+
+function getRetentionsData(result) {
+	let bibRetainedHoldings = JSON.parse(result);
+	
+	let numberOfRetentions = 0
+	let oclcSymbolsRetentions = []
+	
+    if (bibRetainedHoldings.numberOfRecords == 0 || bibRetainedHoldings.briefRecords[0].institutionHolding.briefHoldings == undefined){
+    	numberOfRetentions = 0
+    	oclcSymbolRetentions = []
+    } else {  
+		let retentionSet = bibRetainedHoldings.briefRecords[0].institutionHolding.briefHoldings
+		oclcSymbolRetentions = retentionSet.map(retention => retention.oclcSymbol)
+		numberOfRetentions = retentionSet.length
+    }
+	
+	let retentionData = new Object();
+	retentionData.numberOfRetentions = numberOfRetentions
+	retentionData.oclcSymbolRetentions = oclcSymbolRetentions		    		
+
+    return retentionData;
 }

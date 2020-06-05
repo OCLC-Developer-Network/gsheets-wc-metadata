@@ -9,7 +9,7 @@ brief_bib_response = fs.readFileSync(require('path').resolve(__dirname, './mocks
 
 describe('parse bib json tests', () => {
 	it('Creates a proper object', () => {
-		let bib = lib.getBasicMetadata(brief_bib_response);
+		let bib = lib.parseBasicMetadata(brief_bib_response);
 		expect(bib).to.be.an("object");
 		expect(bib.oclcNumber).to.equal("318877925");
 		expect(bib.title).to.equal("Simon's cat");

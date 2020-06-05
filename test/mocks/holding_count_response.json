@@ -1,0 +1,18 @@
+{
+ "numberOfRecords": 1,
+ "briefRecords": [
+  {
+   "oclcNumber": "318877925",
+   "title": "Simon's cat / by Simon Tofield.",
+   "creator": "Simon. Tofield",
+   "date": "2009.",
+   "language": "eng",
+   "generalFormat": "Book",
+   "specificFormat": "PrintBook",
+   "institutionHolding": {
+    "totalHoldingCount": 464,
+    "totalSharedPrintCount": 0
+   }
+  }
+ ]
+}

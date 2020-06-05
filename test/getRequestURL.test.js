@@ -24,7 +24,7 @@ describe('create brief-bib resource URL tests', () => {
 describe('create get current OCLC number URL tests', () => {	
 	it('Creates url filter by OCLC Number + heldBy ', () => {
 		let url = lib.createRequestURL('getCurrentOCLCNumber', "27972555");
-		expect(url).to.equal("https://worldcat.org//bib/checkcontrolnumbers?oclcNumbers=27972555");
+		expect(url).to.equal("https://worldcat.org/bib/checkcontrolnumbers?oclcNumbers=27972555");
 	});
 	
 });

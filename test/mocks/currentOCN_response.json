@@ -1,0 +1,15 @@
+{
+    "entry": [
+        {
+            "requestedOclcNumber": "261176486",
+            "currentOclcNumber": "311684437",
+            "httpStatusCode": "HTTP 200 OK",
+            "errorDetail": null,
+            "id": "http://worldcat.org/oclc/311684437",
+            "institution": "OCPSB"
+        }
+    ],
+    "startIndex": 1,
+    "totalResults": 1,
+    "itemsPerPage": 1
+}

@@ -1,12 +1,12 @@
 {
-    "requestedOclcNumber": "850939567",
-    "currentOclcNumber": "850939567",
-    "isHoldingSet": false,
+    "requestedOclcNumber": "318877925",
+    "currentOclcNumber": "318877925",
+    "isHoldingSet": true,
     "dateSet": null,
     "dateDeleted": null,
     "holdingHasEverBeenSet": null,
     "updaterId": null,
     "creatorId": null,
-    "id": "http://worldcat.org/oclc/850939567",
+    "id": "http://worldcat.org/oclc/318877925",
     "institution": "OCPSB"
 }

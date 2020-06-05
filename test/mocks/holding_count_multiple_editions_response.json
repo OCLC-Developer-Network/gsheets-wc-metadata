@@ -1,0 +1,47 @@
+{
+        "numberOfRecords": 3,
+        "briefRecords": [
+            {
+                "oclcNumber": "49569228",
+                "title": "Pride and prejudice",
+                "creator": "Jane Austen",
+                "date": "1990",
+                "language": "eng",
+                "generalFormat": "Book",
+                "specificFormat": "Digital",
+                "publisher": "Oxford University Press",
+                "institutionHolding": {
+                    "totalHoldingCount": 1732,
+                    "totalSharedPrintCount": 0
+                }    
+            },
+            {
+                "oclcNumber": "1105472416",
+                "title": "Pride and prejudice",
+                "creator": "Jane Austen",
+                "date": "1990",
+                "language": "eng",
+                "generalFormat": "Book",
+                "specificFormat": "Digital",
+                "publisher": "Oxford University Press",
+                "institutionHolding": {
+                    "totalHoldingCount": 1,
+                    "totalSharedPrintCount": 0
+                }
+             },
+            {
+                "oclcNumber": "940644121",
+                "title": "Pride and prejudice",
+                "creator": "Jane Austen",
+                "date": "1990",
+                "language": "eng",
+                "generalFormat": "Book",
+                "specificFormat": "Digital",
+                "publisher": "Oxford University Press",
+                "institutionHolding": {
+                    "totalHoldingCount": 1,
+                    "totalSharedPrintCount": 0
+                }
+             }   
+        ]
+    }

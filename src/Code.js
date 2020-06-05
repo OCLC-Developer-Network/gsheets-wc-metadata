@@ -155,7 +155,6 @@ function fillMetadata(){
 	  var HOLDINGS_COLUMN = 2;	  
 	  var TITLE_COLUMN = 3;
 	  var AUTHOR_COLUMN = 4;
-	  var ISBN_COLUMN = 5;
 
 	  // Get the current book information in the active sheet. The data
 	  // is placed into a 2D array.
@@ -170,18 +169,12 @@ function fillMetadata(){
 	  // missing titles or authors when they are found.
 	  for(var row = 1; row < bookValues.length; row++){   	   
 
-	      var bookData = getMetadata(bookValues[row][0]);
+	      var bookData = getBasicMetadata(bookValues[row][0]);
 
 	      // Sometimes the API doesn't return the information needed.
 	      // In those cases, don't attempt to update the row further.
 	      if (!bookData) {
 	        continue;
-	      }
-
-	      // The API might not have a title, so only fill it in
-	      // if the API returns one
-	      if(bookData.isbns){
-	        bookValues[row][ISBN_COLUMN] = bookData.isbns; 
 	      }
 	      
 	      // The API might not have a title, so only fill it in
@@ -209,7 +202,7 @@ function fillMergedOCNs(){
 	  var bookValues = dataRange.getValues();
 	  for(var row = 1; row < bookValues.length; row++){
 		  let bib = getBasicMetadata(bookValues[row][0])		 
-		  bookValues[row][6] = bib.mergedOCNs;
+		  bookValues[row][5] = bib.mergedOCNs;
 	  }
 	  
 	  dataRange.setValues(bookValues); 
@@ -226,7 +219,7 @@ function fillHoldingCount(form){
 	  var bookValues = dataRange.getValues();
 	  for(var row = 1; row < bookValues.length; row++){  
 		  var holdingsCount = getHoldingsCount(bookValues[row][0], filterValue);
-		  bookValues[row][7] = holdingsCount;
+		  bookValues[row][6] = holdingsCount;
 	  }
 	  
 	  dataRange.setValues(bookValues);	
@@ -245,7 +238,7 @@ function fillRetentionCheck(form){
 	var bookValues = dataRange.getValues();
 	for(var row = 1; row < bookValues.length; row++){  
 		var retentionCheck = checkRetentions(bookValues[row][0], filterType, filterValue);
-		bookValues[row][8] = retentionCheck;
+		bookValues[row][7] = retentionCheck;
 	}
 	  
 	dataRange.setValues(bookValues);
@@ -264,7 +257,7 @@ function fillRetentionInfo(form){
 	var bookValues = dataRange.getValues();
 	for(var row = 1; row < bookValues.length; row++){  
 		var retentionInfo = getRetentions(bookValues[row][0], filterType, filterValue);
-		bookValues[row][9] = retentionInfo;
+		bookValues[row][8] = retentionInfo;
 	}
 	dataRange.setValues(bookValues);	
 }
