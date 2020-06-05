@@ -1,6 +1,3 @@
-const baseURL = 'https://worldcat.org'
-const metadataBaseURL = 'https://americas.metadata.api.oclc.org/worldcat/v1'
-
 function onOpen() {
   SpreadsheetApp.getUi() // Or DocumentApp or SlidesApp or FormApp.
       .createMenu('Custom Menu')
@@ -8,13 +5,11 @@ function onOpen() {
       .addSeparator()
       .addItem('Get Current OCLC Number', 'fillCurrentOCLCNumber')
       .addSeparator()
-      .addItem('Check Holdings', 'fillHoldingStatus') 
+      .addItem('Check My Holdings', 'fillHoldingStatus') 
       .addSeparator()
       .addItem('Get MergedOCNs', 'fillMergedOCNs')        
       .addSeparator()
       .addItem('Get basic Metadata', 'fillMetadata')
-      .addSeparator()
-      .addItem('Check Holding Status', 'showCheckHoldingsDialog')
       .addSeparator()
       .addItem('Get Holdings Count', 'showGetHoldingsCountDialog')      
       .addSeparator()      
@@ -213,7 +208,7 @@ function fillMergedOCNs(){
 	    .getDataRange();
 	  var bookValues = dataRange.getValues();
 	  for(var row = 1; row < bookValues.length; row++){
-		  let bib = getMetadata(bookValues[row][0])		 
+		  let bib = getBasicMetadata(bookValues[row][0])		 
 		  bookValues[row][6] = bib.mergedOCNs;
 	  }
 	  
@@ -312,16 +307,32 @@ function getHoldingStatus(oclcNumber) {
 function getMetadata(oclcNumber){
 	  var service = getService();
 	  if (service.hasAccess()) {
-	    var url = baseURL + '/bib/data/' + oclcNumber;
+		var url = createRequestURL('getMetadata', oclcNumber)
 	    var response = UrlFetchApp.fetch(url, {
 	      headers: {
 	        Authorization: 'Bearer ' + service.getAccessToken()        
 	      }
 	    });
 	    var content = parseMARCFromXML(response.getContentText());
-	    let bib = appLibrary.parseMarcData(content)
+	    let bib = parseMarcData(content)
 	    return bib
 	    
+	  } else {
+	    Logger.log(service.getLastError());
+	  }
+}
+
+function getBasicMetadata(oclcNumber){
+	  if (service.hasAccess()) {
+		var url = createRequestURL('getBasicMetadata', oclcNumber)
+	    var response = UrlFetchApp.fetch(url, {
+	      headers: {
+	        Authorization: 'Bearer ' + service.getAccessToken()        
+	      }
+	    });
+	    let bib = parseBasicMetadata(response.getContentText())
+	    return bib
+		    
 	  } else {
 	    Logger.log(service.getLastError());
 	  }
@@ -330,16 +341,15 @@ function getMetadata(oclcNumber){
 function getHoldingsCount(oclcNumber, country){
 	  var service = getService();
 	  if (service.hasAccess()) {
-	    var url = metadataBaseURL + '/bibs-holdings?oclcNumber=' + oclcNumber + '&heldInCountry=' + country;
+	    var url = createRequestURL('getHoldingsCount', oclcNumber, 'heldInCountry', country)
 	    var response = UrlFetchApp.fetch(url, {
 	      headers: {
 	        Authorization: 'Bearer ' + service.getAccessToken()        
 	      },
 	      validateHttpsCertificates: false
 	    });
-	    let bib_holding_results = JSON.parse(response.getContentText());	    
-		let holdingsCount = bib_holding_results.briefRecords[0].institutionHolding.totalHoldingCount
-		return holdingsCount
+	    let holdingsData = getHoldingsData(response.getContentText());	    
+		return holdingsData.totalHoldingCount
 	  } else {
 	    Logger.log(service.getLastError());
 	  }
@@ -348,16 +358,15 @@ function getHoldingsCount(oclcNumber, country){
 function checkRetentions(oclcNumber, filterType, filterValue){
 	  var service = getService();
 	  if (service.hasAccess()) {
-	    var url = metadataBaseURL + '/bibs-retained-holdings?oclcNumber=' + oclcNumber + '&' + filterType + '=' + filterValue;
+		var url = createRequestURL('checkRetentions', oclcNumber, filterType, filterValue)
 	    var response = UrlFetchApp.fetch(url, {
 	      headers: {
 	        Authorization: 'Bearer ' + service.getAccessToken()        
 	      },
 	      validateHttpsCertificates: false
 	    });
-	    let bibRetainedHoldings = JSON.parse(response.getContentText());	    
-		let numberOfRecords = bibRetainedHoldings.numberOfRecords
-		if (numberOfRecords == 0){
+		let bibRetainedHoldings = getRetentionsData(response.getContentText());
+		if (bibRetainedHoldings.numberOfRecords == 0){
 			return "FALSE"
 		} else {
 			return "TRUE"
@@ -370,34 +379,16 @@ function checkRetentions(oclcNumber, filterType, filterValue){
 function getRetentions(oclcNumber, filterType, filterValue){
 	  var service = getService();
 	  if (service.hasAccess()) {
-		var url = metadataBaseURL + '/bibs-retained-holdings?oclcNumber=' + oclcNumber + '&' + filterType + '=' + filterValue;
-	    var response = UrlFetchApp.fetch(url, {
-	      headers: {
-	        Authorization: 'Bearer ' + service.getAccessToken()        
-	      },
-	      validateHttpsCertificates: false
-	    });
-	    let bibRetainedHoldings = JSON.parse(response.getContentText());	    
-      if (bibRetainedHoldings.numberOfRecords == 0){
-          return "None"
-      } else {  
-			let retentionSet = bibRetainedHoldings.briefRecords[0].institutionHolding.briefHoldings
-			let oclcSymbolsRetentions = retentionSet.map(retention => retention.oclcSymbol)
-			return oclcSymbolsRetentions.join();
-      }
+		var url = createRequestURL('getRetentions', oclcNumber, filterType, filterValue)
+		var response = UrlFetchApp.fetch(url, {
+		  headers: {
+		    Authorization: 'Bearer ' + service.getAccessToken()        
+		  },
+		  validateHttpsCertificates: false
+		});
+		let bibRetainedHoldings = getRetentionsData(response.getContentText());
+		return bibRetainedHoldings.oclcSymbolsRetentions.join()
 	  } else {
 	    Logger.log(service.getLastError());
 	  }
-}
-
-function parseMARCFromXML(responseXML){
-	var result = XmlService.parse(responseXML);
-    var root = result.getRootElement();
-    var atom = XmlService.getNamespace('http://www.w3.org/2005/Atom');
-    var rb = XmlService.getNamespace('http://worldcat.org/rb');
-    var marc = XmlService.getNamespace('http://www.loc.gov/MARC21/slim');
-    var entries = root.getChildren('content', atom);
-    var content = entries[0].getChild('response', rb).getChild('record', marc);
-    var xml = XmlService.getCompactFormat().format(content);
-    return xml
 }

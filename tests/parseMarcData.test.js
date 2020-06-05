@@ -1,11 +1,15 @@
 const expect = require('chai').expect;
 const fs = require('fs');
 
-const lib = require('../src/lib.js');
+var gas = require('gas-local');
 
-describe('parse Marc record tests', () => {
+const lib = gas.require('./src');
+
+marc_record = fs.readFileSync(require('path').resolve(__dirname, './mocks/marc_record.xml')).toString();
+
+describe('parse bib json tests', () => {
 	it('Creates a proper object', () => {
-		let bib = lib.parseMarcData(marc_response);
+		let bib = lib.parseMarcData(marc_record);
 		expect(bib).to.be.an("object");
 		expect(bib.oclcNumber).to.equal(128807);
 		expect(bib.title).to.equal(128807);

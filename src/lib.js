@@ -1,6 +1,36 @@
 const xpath = require('xpath')
 const dom = require('xmldom').DOMParser
 
+function createRequestURL(functionName, oclcNumber, filterType, filterValue) {
+	const baseURL = 'https://worldcat.org'
+	const metadataBaseURL = 'https://americas.metadata.api.oclc.org/worldcat/search/v1'
+
+	if (functionName == 'getCurrentOCLCNumber'){
+		url = baseURL + '/bib/checkcontrolnumbers?oclcNumbers=' + oclcNumber; 
+	} else if (functionName == 'getHoldingStatus'){
+		url = baseURL + '/ih/checkholdings?oclcNumber=' + oclcNumber; 
+	} else if (functionName == 'getMetadata'){
+		url = baseURL + '/bib' + oclcNumber;
+	} else if (functionName == 'getHoldingsCount'){
+		url = metadataBaseURL + '/bibs-summary-holdings?oclcNumber=' + oclcNumber + '&' + filterType + '=' + filterValue;
+	} else if (functionName == 'checkRetentions' || functionName == 'getRetentions'){
+		url = metadataBaseURL + '/bibs-retained-holdings?oclcNumber=' + oclcNumber + '&' + filterType + '=' + filterValue;		
+	} else {
+		url = metadataBaseURL + '/brief-bibs/' + oclcNumber
+	}
+
+	return url
+}
+
+// rewrite to use standard library
+function parseMARCFromXML(responseXML){    
+    var doc = new dom().parseFromString(responseXML)
+	var select = xpath.useNamespaces({"atom": "http://www.w3.org/2005/Atom", "rb": "http://worldcat.org/rb"});
+    var marc = select("//atom:content/rb:response]", doc)[0].firstChild.data
+    return marc
+}
+
+
 function parseMarcData(record){
 	
 	var doc = new dom().parseFromString(record)
@@ -27,33 +57,21 @@ function parseMarcData(record){
 	return bib;
 }
 
-function getBasicMetadata (result) {
-	let record = JSON.parse(result);
-	
-	let oclcNumber = record.identifier.oclcNumber
-	let title = record.title.mainTitles[0].text
-	title = title.replace(/\s\/+$/, "")
-
-	let author = record.contributor.creators[0].secondName.text + ', ' + record.contributor.creators[0].firstName.text
-	
-	let mergedOclcNumbers = record.identifier.mergedOclcNumbers
-	
-	let mergedOCNList = ""
-	if (mergedOclcNumbers && mergedOclcNumbers.length > 0) {
-		mergedOCNList = mergedOclcNumbers.join('|')
-	}	
-
+function parseBasicMetadata(result) {
+	let record = JSON.parse(result);	
 	
 	let bib = new Object(); 
-	bib.oclcNumber = oclcNumber
-	bib.title =  title
-	bib.author = author
-	bib.mergedOCNs = mergedOCNList		    		
+	bib.oclcNumber = record.oclcNumber
+	bib.title =  record.title
+	bib.creator = record.creator
+	bib.date = record.date
+	bib.language = record.language
+	bib.generalFormat = record.generalFormat
+	bib.specificFormat = record.specificFormat
+	bib.edition = record.edition
+	bib.publisher = bib.publisher
+	bib.catalogingAgency = bib.catalogingInfo.catalogingAgency
+	bib.mergedOCNs = mergedOclcNumbers		    		
 
     return bib
 }
-
-export {
-	parseMarcData,
-	getBasicMetadata
-};
