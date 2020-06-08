@@ -359,7 +359,7 @@ function checkRetentions(oclcNumber, filterType, filterValue){
 	      validateHttpsCertificates: false
 	    });
 		let bibRetainedHoldings = getRetentionsData(response.getContentText());
-		if (bibRetainedHoldings.numberOfRecords == 0){
+		if (bibRetainedHoldings.numberOfRetentions == 0){
 			return "FALSE"
 		} else {
 			return "TRUE"
@@ -380,7 +380,7 @@ function getRetentions(oclcNumber, filterType, filterValue){
 		  validateHttpsCertificates: false
 		});
 		let bibRetainedHoldings = getRetentionsData(response.getContentText());
-		return bibRetainedHoldings.oclcSymbolsRetentions.join()
+		return bibRetainedHoldings.oclcSymbolRetentions.join()
 	  } else {
 	    Logger.log(service.getLastError());
 	  }
