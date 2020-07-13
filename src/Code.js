@@ -73,27 +73,45 @@ function showDialog() {
 	}
 
 function saveCredentials(form) {
-   
-   var ui = SpreadsheetApp.getUi();
-   
-   //MAKE SURE THE OCLC API KEY AND SECRET HAVE BEEN ENTERED
-   let apiKey = form.apiKey;
-   let secret = form.apiSecret;
-   if (apiKey == null || apiKey == "" || secret == null || secret == "") {
-     ui.alert("OCLC API Key and Secret are Required");
-     return;
-   }
-   PropertiesService.getUserProperties().setProperty('apiKey', apiKey);
-   PropertiesService.getUserProperties().setProperty('secret', secret);
- }
+	   
+	   var ui = SpreadsheetApp.getUi();
+	   
+	   //MAKE SURE THE OCLC API KEY AND SECRET HAVE BEEN ENTERED
+	   let apiKey = form.apiKey;
+	   let secret = form.apiSecret;
+	   let institutionSymbol = form.institutionSymbol;
+	   if (apiKey == null || apiKey == "" || secret == null || secret == "" || institutionSymbol == null || institutionSymbol == "") {
+	     ui.alert("OCLC API Key, Secret and Institution Symbol are Required");
+	     return;
+	   }
+	   PropertiesService.getUserProperties().setProperty('apiKey', apiKey);
+	   PropertiesService.getUserProperties().setProperty('secret', secret);   
+	   PropertiesService.getUserProperties().setProperty('institutionSymbol', institutionSymbol);
+	   
+	   let service = OAuth2.createService('WorldCat Search API')
+		   // Set the endpoint URLs.
+		   .setTokenUrl('https://oauth.oclc.org/token')
+		
+		   // Set the client ID and secret.
+		   .setClientId(apiKey)
+		   .setClientSecret(secret)
+		
+		   // Sets the custom grant type to use.
+		   .setGrantType('client_credentials')
+		   .setScope('wcapi')
+		
+		   // Set the property store where authorized tokens should be persisted.
+		   .setPropertyStore(PropertiesService.getUserProperties());
+	   PropertiesService.getUserProperties().setProperty('service', service);
+}
 
-function getStoredAPIKey() {
-    return PropertiesService.getUserProperties().getProperty('apiKey')
- }
-
-function getStoredAPISecret() {
-    return PropertiesService.getUserProperties().getProperty('secret')
- }
+function getConfig() {
+    let config = new Object();
+	config.apiKey = PropertiesService.getUserProperties().getProperty('apiKey')
+    config.apiSecret = PropertiesService.getUserProperties().getProperty('secret')
+    config.institutionSymbol = PropertiesService.getUserProperties().getProperty('institutionSymbol')
+    return config;
+}
 
 /**
  * Reset the authorization state, so that it can be re-tested.
@@ -106,20 +124,7 @@ function reset() {
  * Configures the service.
  */
 function getService() {
-  return OAuth2.createService('WorldCat Metadata API')
-      // Set the endpoint URLs.
-      .setTokenUrl('https://oauth.oclc.org/token')
-
-      // Set the client ID and secret.
-      .setClientId(PropertiesService.getUserProperties().getProperty('apiKey'))
-      .setClientSecret(PropertiesService.getUserProperties().getProperty('secret'))
-
-      // Sets the custom grant type to use.
-      .setGrantType('client_credentials')
-      .setScope('WorldCatMetadataAPI')
-  
-      // Set the property store where authorized tokens should be persisted.
-      .setPropertyStore(PropertiesService.getUserProperties());
+	return PropertiesService.getUserProperties().getProperty('service')
 }
 
 function fillCurrentOCLCNumber(){
@@ -266,7 +271,7 @@ function fillRetentionInfo(form){
 function getCurrentOCLCNumber(oclcNumber) {
 	  var service = getService();
 	  if (service.hasAccess()) {
-	    var url = baseURL + '/bib/checkcontrolnumbers?oclcNumbers=' + oclcNumber;
+	    var url = createRequestURL('getCurrentOCLCNumber', oclcNumber)
 	    var response = UrlFetchApp.fetch(url, {
 	      headers: {
 	        Authorization: 'Bearer ' + service.getAccessToken(),
@@ -283,7 +288,7 @@ function getCurrentOCLCNumber(oclcNumber) {
 function getHoldingStatus(oclcNumber) {
 	  var service = getService();
 	  if (service.hasAccess()) {
-	    var url = baseURL + '/ih/checkholdings?oclcNumber=' + oclcNumber;
+	    var url = createRequestURL('getHoldingStatus', oclcNumber)
 	    var response = UrlFetchApp.fetch(url, {
 	      headers: {
 	        Authorization: 'Bearer ' + service.getAccessToken(),
@@ -316,6 +321,7 @@ function getMetadata(oclcNumber){
 }
 
 function getBasicMetadata(oclcNumber){
+	  var service = getService();	
 	  if (service.hasAccess()) {
 		var url = createRequestURL('getBasicMetadata', oclcNumber)
 	    var response = UrlFetchApp.fetch(url, {
