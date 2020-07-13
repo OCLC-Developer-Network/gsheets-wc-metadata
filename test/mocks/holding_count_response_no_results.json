@@ -1,0 +1,28 @@
+{
+    "numberOfRecords": 1,
+    "briefRecords": [
+        {
+            "oclcNumber": "1",
+            "title": "The Rand McNally book of favorite pastimes",
+            "creator": "Dorothy. Grider",
+            "date": "1963",
+            "language": "eng",
+            "generalFormat": "Book",
+            "specificFormat": "PrintBook",
+            "publisher": "Rand McNally",
+            "mergedOclcNumbers": [
+                "6567842",
+                "9987701",
+                "53095235",
+                "433981287"
+            ],
+            "catalogingInfo": {
+                "catalogingAgency": "DLC",
+                "transcribingAgency": "DLC"
+            },
+            "institutionHolding": {
+                "totalHoldingCount": 0
+            }
+        }
+    ]
+}
