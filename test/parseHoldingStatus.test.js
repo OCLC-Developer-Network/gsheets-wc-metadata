@@ -9,12 +9,12 @@ no_holdings_status_response = fs.readFileSync(require('path').resolve(__dirname,
 
 describe('parse holding search', () => {
 	it('parses search that matches holdings', () => {
-		let holdingStatus = lib.getHoldingStatus(holdings_status_response);
+		let holdingStatus = lib.parseHoldingStatus(holdings_status_response);
 		expect(holdingStatus).to.equal('TRUE');
 	});
 	
 	it('parses search with no results', () => {
-		let holdingStatus = lib.getHoldingStatus(no_holdings_status_response);
+		let holdingStatus = lib.parseHoldingStatus(no_holdings_status_response);
 		expect(holdingStatus).to.equal('FALSE');
 	});
 });

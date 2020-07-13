@@ -9,12 +9,12 @@ currentOCN_response_same = fs.readFileSync(require('path').resolve(__dirname, '.
 
 describe('parse current OCLC Number response', () => {
 	it('parses response OCLC number different', () => {
-		let currentOCLCNumber = lib.getCurrentOCLCNumber(currentOCN_response);
+		let currentOCLCNumber = lib.parseCurrentOCLCNumber(currentOCN_response);
 		expect(currentOCLCNumber).to.equal('311684437');
 	});
 	
 	it('parses response OCLC number same', () => {
-		let currentOCLCNumber = lib.getCurrentOCLCNumber(currentOCN_response_same);
+		let currentOCLCNumber = lib.parseCurrentOCLCNumber(currentOCN_response_same);
 		expect(currentOCLCNumber).to.equal('318877925');
 	});
 });

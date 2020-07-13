@@ -273,8 +273,8 @@ function getCurrentOCLCNumber(oclcNumber) {
 	        Accept: 'application/json'
 	      }
 	    });
-	    var result = JSON.parse(response.getContentText());
-	    return result.entry[0].currentOclcNumber
+	    var currentOclcNumber = parseCurrentOCLCNumber(response.getContentText());
+	    return currentOclcNumber
 	  } else {
 	    Logger.log(service.getLastError());
 	  }
@@ -290,8 +290,8 @@ function getHoldingStatus(oclcNumber) {
 	        Accept: 'application/json'	        
 	      }
 	    });
-	    var result = JSON.parse(response.getContentText());
-	    return result.isHoldingSet
+	    let holdingStatus = parseHoldingStatus(response.getContentText())
+		return holdingStatus
 	  } else {
 	    Logger.log(service.getLastError());
 	  }
@@ -341,8 +341,8 @@ function getHoldingsCount(oclcNumber, country){
 	      },
 	      validateHttpsCertificates: false
 	    });
-	    let holdingsData = getHoldingsData(response.getContentText());	    
-		return holdingsData.totalHoldingCount
+	    let holdingCount = parseHoldingsCount(response.getContentText());	    
+		return holdingCount
 	  } else {
 	    Logger.log(service.getLastError());
 	  }
@@ -358,7 +358,7 @@ function checkRetentions(oclcNumber, filterType, filterValue){
 	      },
 	      validateHttpsCertificates: false
 	    });
-		let bibRetainedHoldings = getRetentionsData(response.getContentText());
+		let bibRetainedHoldings = parseRetentionsData(response.getContentText());
 		if (bibRetainedHoldings.numberOfRetentions == 0){
 			return "FALSE"
 		} else {
@@ -379,7 +379,7 @@ function getRetentions(oclcNumber, filterType, filterValue){
 		  },
 		  validateHttpsCertificates: false
 		});
-		let bibRetainedHoldings = getRetentionsData(response.getContentText());
+		let bibRetainedHoldings = parseRetentionsData(response.getContentText());
 		return bibRetainedHoldings.oclcSymbolRetentions.join()
 	  } else {
 	    Logger.log(service.getLastError());

@@ -9,12 +9,12 @@ holding_count_multiple_editions_response = fs.readFileSync(require('path').resol
 
 describe('parse holding count', () => {
 	it('parses result with 1 edition', () => {
-		let holdingCount = lib.getHoldingCount(holding_count_response);
+		let holdingCount = lib.parseHoldingsCount(holding_count_response);
 		expect(holdingCount).to.equal(464);
 	});
 	
 	it('parses result with multiple editions', () => {
-		let holdingCount = lib.getHoldingCount(holding_count_multiple_editions_response);
+		let holdingCount = lib.parseHoldingsCount(holding_count_multiple_editions_response);
 		expect(holdingCount).to.equal(1734);
 	});
 });
