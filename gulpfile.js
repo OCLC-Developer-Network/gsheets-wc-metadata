@@ -12,7 +12,13 @@ gulp.task('clean', async function() {
 
 gulp.task('copy', async function() {
 	return gulp
-		.src(['src/Page.html', 'src/appsscript.json'])
+		.src(['src/Page.html', 
+			'src/CheckRetentions.html', 
+			'src/GetHoldings.html', 
+			'src/GetHoldingsCount.html',
+			'src/GetRetentions.html', 
+			'src/appsscript.json', 
+			'src/.clasp.json'])
 		.pipe(copy('dist', { prefix: 1 }))
 });
 
