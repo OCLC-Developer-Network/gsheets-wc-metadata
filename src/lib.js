@@ -65,9 +65,15 @@ function parseMarcData(data){
 function parseBasicMetadata(result) {
 	let record = JSON.parse(result);	
 	
+	let title = record.title
+	// remove trailing space slash
+	title = title.replace(/\s\/.*$/, "")
+	// remove trailing period
+	title = title.replace(/\.$/, "");
+	
 	let bib = new Object(); 
 	bib.oclcNumber = record.oclcNumber
-	bib.title =  record.title
+	bib.title =  title
 	bib.creator = record.creator
 	bib.date = record.date
 	bib.language = record.language
