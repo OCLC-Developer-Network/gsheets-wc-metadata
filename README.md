@@ -1,11 +1,68 @@
 # WorldCat Metadata API Google Add On
+
+## Use cases
 - Get Current OCLC Number
 - Get MergedOCNs        
 - Get basic Metadata
 - Check My Holding Status
 - Get Holdings Count       
 - Check Retentions
-- Get Retentions  
-- Add LBD with Note
-- Set Holdings
-- Delete Holdings
+- Get Retentions 
+
+## Installation instructions
+### Step 1: Clone the repository
+Clone this repository
+
+```bash
+$ git clone {url}
+```
+or download directly from GitHub.
+
+Change into the application directory
+
+### Step 2: Install  dependencies
+
+```bash
+$ npm install
+```
+
+### Step 3: Bundle Add on
+```bash
+$ npm run build
+```
+
+### Step 4: Deploy to your Google Account
+```bash
+$ npm run push-dist
+```
+
+## Testing and developmentment
+
+### Step 1: Clone the repository
+Clone this repository
+
+```bash
+$ git clone {url}
+```
+or download directly from GitHub.
+
+Change into the application directory
+
+### Step 2: Install  dependencies
+
+```bash
+$ npm install
+```
+
+### Step 3: Run local tests
+
+```bash
+$ npm test
+```
+
+### Step 4: Testing in Google infrastructure
+```bash
+$ npm push
+```
+
+
