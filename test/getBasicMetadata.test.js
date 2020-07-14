@@ -6,8 +6,8 @@ const mocks = require("./mocks/gas-mocks");
 
 const lib = gas.require('./src', mocks);
 
-bib_response = fs.readFileSync(require('path').resolve(__dirname, './mocks/brief_bib_response.json')).toString();
-bib_noISBNs_response = fs.readFileSync(require('path').resolve(__dirname, './mocks/brief-bib-noISBNs.json')).toString();
+brief_bib_response = fs.readFileSync(require('path').resolve(__dirname, './mocks/brief_bib_response.json')).toString();
+bib_noISBNs = fs.readFileSync(require('path').resolve(__dirname, './mocks/brief-bib-noISBNs.json')).toString();
 bib_no_subfieldb_response = fs.readFileSync(require('path').resolve(__dirname, './mocks/brief-bib-2.json')).toString();
 bib_subfield_d_response = fs.readFileSync(require('path').resolve(__dirname, './mocks/brief-bib-3.json')).toString();
 no_bib_response = fs.readFileSync(require('path').resolve(__dirname, './mocks/no_brief-bib.json')).toString();
@@ -29,7 +29,7 @@ describe('parse basic metadata tests', () => {
 	describe('Make a request for a record', () => {
 		it('Creates a proper object', () => {
 		    sinon.stub(mocks.UrlFetchApp, 'fetch').returns({
-	    	    getContentText: () => bib_response,
+	    	    getContentText: () => brief_bib_response,
 	    	    getResponseCode: () => 200
 	    	  });
 			let bib = lib.getBasicMetadata(318877925);
@@ -46,14 +46,14 @@ describe('parse basic metadata tests', () => {
 	describe('Make a request for a record with no ISBNs', () => {
 		it('Creates a handles bib with no ISBNs object', () => {
 		    sinon.stub(mocks.UrlFetchApp, 'fetch').returns({
-	    	    getContentText: () => bib_noISBNs_response,
+	    	    getContentText: () => bib_noISBNs,
 	    	    getResponseCode: () => 200
 	    	  });			
 			let bib = lib.getBasicMetadata(1);
 			expect(bib).to.be.an("object");
 			expect(bib.oclcNumber).to.equal("1");
 			expect(bib.title).to.equal("The Rand McNally book of favorite pastimes");
-			expect(bib.creator).to.equal("Grider, Dorothy");
+			expect(bib.creator).to.equal("Dorothy. Grider");
 			expect(bib.mergedOCNs).to.be.an("array");
 			expect(bib.mergedOCNs.join()).to.equal("6567842,9987701,53095235,433981287")
 		});
