@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<record xmlns="http://www.loc.gov/MARC21/slim">
+	    <leader>00000cam a2200000 a 4500</leader>
+	    <controlfield tag="001">ocn318877925</controlfield>
+	    <controlfield tag="003">OCoLC</controlfield>
+	    <controlfield tag="005">20200610054316.8</controlfield>
+	    <controlfield tag="008">090611s2009    nyua     6    000 1 eng  </controlfield>
+	    <datafield tag="010" ind1=" " ind2=" ">
+	        <subfield code="a">  2009930514</subfield>
+	    </datafield>
+	    <datafield tag="040" ind1=" " ind2=" ">
+	        <subfield code="a">DLC</subfield>
+	        <subfield code="b">eng</subfield>
+	        <subfield code="c">DLC</subfield>
+	        <subfield code="d">BTCTA</subfield>
+	        <subfield code="d">RNL</subfield>
+	        <subfield code="d">JRS</subfield>
+	        <subfield code="d">YDXCP</subfield>
+	        <subfield code="d">GK8</subfield>
+	        <subfield code="d">TXA</subfield>
+	        <subfield code="d">BDX</subfield>
+	        <subfield code="d">OCLCF</subfield>
+	        <subfield code="d">OCLCQ</subfield>
+	        <subfield code="d">TDS</subfield>
+	        <subfield code="d">GRR</subfield>
+	        <subfield code="d">OCLCO</subfield>
+	        <subfield code="d">OCL</subfield>
+	        <subfield code="d">W8A</subfield>
+	        <subfield code="d">LMJ</subfield>
+	        <subfield code="d">PRSPR</subfield>
+	    </datafield>
+	    <datafield tag="019" ind1=" " ind2=" ">
+	        <subfield code="a">877908501</subfield>
+	        <subfield code="a">979175514</subfield>
+	        <subfield code="a">981548811</subfield>
+	        <subfield code="a">990719089</subfield>
+	        <subfield code="a">993246604</subfield>
+	        <subfield code="a">1005002644</subfield>
+	        <subfield code="a">1011917725</subfield>
+	        <subfield code="a">1016539262</subfield>
+	        <subfield code="a">1020206933</subfield>
+	        <subfield code="a">1043441377</subfield>
+	        <subfield code="a">1057597575</subfield>
+	        <subfield code="a">1089599685</subfield>
+	        <subfield code="a">1145205644</subfield>
+	        <subfield code="a">1157113159</subfield>
+	    </datafield>
+	    <datafield tag="020" ind1=" " ind2=" ">
+	        <subfield code="a">9780446560061</subfield>
+	        <subfield code="q">(pbk.)</subfield>
+	    </datafield>
+	    <datafield tag="020" ind1=" " ind2=" ">
+	        <subfield code="a">0446560065</subfield>
+	        <subfield code="q">(pbk.)</subfield>
+	    </datafield>
+	    <datafield tag="029" ind1="1" ind2=" ">
+	        <subfield code="a">AU@</subfield>
+	        <subfield code="b">000044711747</subfield>
+	    </datafield>
+	    <datafield tag="029" ind1="1" ind2=" ">
+	        <subfield code="a">NZ1</subfield>
+	        <subfield code="b">13690578</subfield>
+	    </datafield>
+	    <datafield tag="035" ind1=" " ind2=" ">
+	        <subfield code="a">(OCoLC)318877925</subfield>
+	        <subfield code="z">(OCoLC)877908501</subfield>
+	        <subfield code="z">(OCoLC)979175514</subfield>
+	        <subfield code="z">(OCoLC)981548811</subfield>
+	        <subfield code="z">(OCoLC)990719089</subfield>
+	        <subfield code="z">(OCoLC)993246604</subfield>
+	        <subfield code="z">(OCoLC)1005002644</subfield>
+	        <subfield code="z">(OCoLC)1011917725</subfield>
+	        <subfield code="z">(OCoLC)1016539262</subfield>
+	        <subfield code="z">(OCoLC)1020206933</subfield>
+	        <subfield code="z">(OCoLC)1043441377</subfield>
+	        <subfield code="z">(OCoLC)1057597575</subfield>
+	        <subfield code="z">(OCoLC)1089599685</subfield>
+	        <subfield code="z">(OCoLC)1145205644</subfield>
+	        <subfield code="z">(OCoLC)1157113159</subfield>
+	    </datafield>
+	    <datafield tag="043" ind1=" " ind2=" ">
+	        <subfield code="a">e-uk-en</subfield>
+	    </datafield>
+	    <datafield tag="050" ind1="0" ind2="0">
+	        <subfield code="a">PN6738.S56</subfield>
+	        <subfield code="b">T64 2009</subfield>
+	    </datafield>
+	    <datafield tag="082" ind1="0" ind2="0">
+	        <subfield code="a">741.5/942</subfield>
+	        <subfield code="2">23</subfield>
+	    </datafield>
+	    <datafield tag="049" ind1=" " ind2=" ">
+	        <subfield code="a">MAIN</subfield>
+	    </datafield>
+	    <datafield tag="100" ind1="1" ind2=" ">
+	        <subfield code="a">Tofield, Simon.</subfield>
+	    </datafield>
+	    <datafield tag="245" ind1="1" ind2="0">
+	        <subfield code="a">Simon's cat /</subfield>
+	        <subfield code="c">by Simon Tofield.</subfield>
+	    </datafield>
+	    <datafield tag="246" ind1="1" ind2="4">
+	        <subfield code="a">Simon's cat in his very own book</subfield>
+	    </datafield>
+	    <datafield tag="250" ind1=" " ind2=" ">
+	        <subfield code="a">1st ed.</subfield>
+	    </datafield>
+	    <datafield tag="260" ind1=" " ind2=" ">
+	        <subfield code="a">New York :</subfield>
+	        <subfield code="b">Grand Central Pub.,</subfield>
+	        <subfield code="c">2009.</subfield>
+	    </datafield>
+	    <datafield tag="300" ind1=" " ind2=" ">
+	        <subfield code="a">1 volume (unpaged) :</subfield>
+	        <subfield code="b">illustrations ;</subfield>
+	        <subfield code="c">15 x 22 cm</subfield>
+	    </datafield>
+	    <datafield tag="336" ind1=" " ind2=" ">
+	        <subfield code="a">text</subfield>
+	        <subfield code="b">txt</subfield>
+	        <subfield code="2">rdacontent</subfield>
+	    </datafield>
+	    <datafield tag="337" ind1=" " ind2=" ">
+	        <subfield code="a">unmediated</subfield>
+	        <subfield code="b">n</subfield>
+	        <subfield code="2">rdamedia</subfield>
+	    </datafield>
+	    <datafield tag="338" ind1=" " ind2=" ">
+	        <subfield code="a">volume</subfield>
+	        <subfield code="b">nc</subfield>
+	        <subfield code="2">rdacarrier</subfield>
+	    </datafield>
+	    <datafield tag="490" ind1="1" ind2=" ">
+	        <subfield code="a">Simon's cat</subfield>
+	    </datafield>
+	    <datafield tag="520" ind1=" " ind2=" ">
+	        <subfield code="a">Originally created as a series of animated cartoons broadcast on youtube.com, Simon's Cat is a collection of drawings by London animator Simon Tofield featuring his cat Simon.</subfield>
+	    </datafield>
+	    <datafield tag="650" ind1=" " ind2="0">
+	        <subfield code="a">Cats</subfield>
+	        <subfield code="v">Comic books, strips, etc.</subfield>
+	    </datafield>
+	    <datafield tag="650" ind1=" " ind2="0">
+	        <subfield code="a">Human-animal relationships</subfield>
+	        <subfield code="v">Comic books, strips, etc.</subfield>
+	    </datafield>
+	    <datafield tag="650" ind1=" " ind2="0">
+	        <subfield code="a">English wit and humor, Pictorial.</subfield>
+	    </datafield>
+	    <datafield tag="650" ind1=" " ind2="1">
+	        <subfield code="a">Cats</subfield>
+	        <subfield code="v">Comic books, strips, etc.</subfield>
+	    </datafield>
+	    <datafield tag="650" ind1=" " ind2="1">
+	        <subfield code="a">Human-animal relationships</subfield>
+	        <subfield code="v">Comic books, strips, etc.</subfield>
+	    </datafield>
+	    <datafield tag="650" ind1=" " ind2="7">
+	        <subfield code="a">Cats.</subfield>
+	        <subfield code="2">fast</subfield>
+	        <subfield code="0">(OCoLC)fst00849374</subfield>
+	    </datafield>
+	    <datafield tag="650" ind1=" " ind2="7">
+	        <subfield code="a">English wit and humor, Pictorial.</subfield>
+	        <subfield code="2">fast</subfield>
+	        <subfield code="0">(OCoLC)fst00912418</subfield>
+	    </datafield>
+	    <datafield tag="650" ind1=" " ind2="7">
+	        <subfield code="a">Human-animal relationships.</subfield>
+	        <subfield code="2">fast</subfield>
+	        <subfield code="0">(OCoLC)fst00963482</subfield>
+	    </datafield>
+	    <datafield tag="655" ind1=" " ind2="0">
+	        <subfield code="a">English wit and humor, Pictoral.</subfield>
+	    </datafield>
+	    <datafield tag="655" ind1=" " ind2="7">
+	        <subfield code="a">Comics (Graphic works)</subfield>
+	        <subfield code="2">fast</subfield>
+	        <subfield code="0">(OCoLC)fst01921613</subfield>
+	    </datafield>
+	    <datafield tag="655" ind1=" " ind2="7">
+	        <subfield code="a">Comic books, strips, etc.</subfield>
+	        <subfield code="2">fast</subfield>
+	        <subfield code="0">(OCoLC)fst01423722</subfield>
+	    </datafield>
+	    <datafield tag="655" ind1=" " ind2="7">
+	        <subfield code="a">Comic books, strips, etc.</subfield>
+	        <subfield code="2">gsafd</subfield>
+	    </datafield>
+	    <datafield tag="655" ind1=" " ind2="7">
+	        <subfield code="a">English wit and humor, Pictorial.</subfield>
+	        <subfield code="2">lcgft</subfield>
+	    </datafield>
+	    <datafield tag="655" ind1=" " ind2="7">
+	        <subfield code="a">Comics (Graphic works)</subfield>
+	        <subfield code="2">lcgft</subfield>
+	    </datafield>
+	    <datafield tag="830" ind1=" " ind2="0">
+	        <subfield code="a">Simon's cat.</subfield>
+	    </datafield>
+	    <datafield tag="938" ind1=" " ind2=" ">
+	        <subfield code="a">Brodart</subfield>
+	        <subfield code="b">BROD</subfield>
+	        <subfield code="n">10178236</subfield>
+	        <subfield code="c">$12.99</subfield>
+	    </datafield>
+	    <datafield tag="938" ind1=" " ind2=" ">
+	        <subfield code="a">Baker and Taylor</subfield>
+	        <subfield code="b">BTCP</subfield>
+	        <subfield code="n">BK0008326070</subfield>
+	    </datafield>
+	    <datafield tag="938" ind1=" " ind2=" ">
+	        <subfield code="a">YBP Library Services</subfield>
+	        <subfield code="b">YANK</subfield>
+	        <subfield code="n">3082604</subfield>
+	    </datafield>
+	</record>        

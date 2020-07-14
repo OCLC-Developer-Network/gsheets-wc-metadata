@@ -5,9 +5,8 @@ const mocks = require("./mocks/gas-mocks");
 
 const lib = gas.require('./src', mocks);
 
-bib_response = fs.readFileSync(require('path').resolve(__dirname, './mocks/bib.xml')).toString();
-bib_noISBNs_response = fs.readFileSync(require('path').resolve(__dirname, './mocks/bib-noISBNs.xml')).toString();
-no_bib_response = fs.readFileSync(require('path').resolve(__dirname, './mocks/no_bib.xml')).toString();
+bib_response = fs.readFileSync(require('path').resolve(__dirname, './mocks/bib-marc.xml')).toString();
+bib_noISBNs_response = fs.readFileSync(require('path').resolve(__dirname, './mocks/bib-noISBNs-marc.xml')).toString();
 
 describe.skip('Handle parsing a MARC records', () => {
 	it('Creates a proper object', () => {	    
@@ -32,10 +31,5 @@ describe.skip('Handle parsing a MARC records', () => {
 		expect(bib.isbns.join()).to.equal("");
 		expect(bib.mergedOCNs).to.be.an("array");
 		expect(bib.mergedOCNs.join()).to.equal("6567842,9987701,53095235,433981287")
-	});
-	
-	it('Creates a handles bib which is an error', () => {		
-		let bib = lib.parseMarcData(no_bib_response);
-		expect(bib).to.be.an("object");
 	});
 });

@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entry xmlns="http://www.w3.org/2005/Atom">
+    <content type="application/xml">
+        <response xmlns="http://worldcat.org/rb" mimeType="application/vnd.oclc.marc21+xml">
+            <record xmlns="http://www.loc.gov/MARC21/slim">
+                <leader>00000cam a2200000 a 4500</leader>
+                <controlfield tag="001">ocm00000001</controlfield>
+                <controlfield tag="003">OCoLC</controlfield>
+                <controlfield tag="005">20200526103400.5</controlfield>
+                <controlfield tag="008">690526s1963    ilua   j      000 j eng  </controlfield>
+                <datafield tag="010" ind1=" " ind2=" ">
+                    <subfield code="a">   63011276 </subfield>
+                </datafield>
+                <datafield tag="040" ind1=" " ind2=" ">
+                    <subfield code="a">DLC</subfield>
+                    <subfield code="b">eng</subfield>
+                    <subfield code="c">DLC</subfield>
+                    <subfield code="d">IUL</subfield>
+                    <subfield code="d">BTCTA</subfield>
+                    <subfield code="d">BMU</subfield>
+                    <subfield code="d">AAA</subfield>
+                    <subfield code="d">BNM</subfield>
+                    <subfield code="d">CUS</subfield>
+                    <subfield code="d">REC</subfield>
+                    <subfield code="d">WAU</subfield>
+                    <subfield code="d">OCC</subfield>
+                    <subfield code="d">OCWMS</subfield>
+                    <subfield code="d">RBN</subfield>
+                    <subfield code="d">OCL</subfield>
+                    <subfield code="d">OCWMS</subfield>
+                    <subfield code="d">OCL</subfield>
+                    <subfield code="d">CUS</subfield>
+                    <subfield code="d">OCLCQ</subfield>
+                    <subfield code="d">OCWMS</subfield>
+                    <subfield code="d">OCL</subfield>
+                    <subfield code="d">OCWMS</subfield>
+                    <subfield code="d">OCL</subfield>
+                    <subfield code="d">OCLCF</subfield>
+                    <subfield code="d">OCL</subfield>
+                    <subfield code="d">TS249</subfield>
+                    <subfield code="d">CRU</subfield>
+                    <subfield code="d">OCLCQ</subfield>
+                    <subfield code="d">OCLCO</subfield>
+                    <subfield code="d">OCWMS</subfield>
+                    <subfield code="d">PG2</subfield>
+                    <subfield code="d">IHI</subfield>
+                    <subfield code="d">OCLCQ</subfield>
+                    <subfield code="d">OCWMS</subfield>
+                    <subfield code="d">ZMY</subfield>
+                    <subfield code="d">FQR</subfield>
+                    <subfield code="d">DLC</subfield>
+                    <subfield code="d">OCL</subfield>
+                    <subfield code="d">OCLCQ</subfield>
+                    <subfield code="d">GSL</subfield>
+                    <subfield code="d">HQM</subfield>
+                    <subfield code="d">NLC</subfield>
+                    <subfield code="d">NDD</subfield>
+                    <subfield code="d">OCLCQ</subfield>
+                    <subfield code="d">OCLCO</subfield>
+                    <subfield code="d">OCLCQ</subfield>
+                    <subfield code="d">DLC</subfield>
+                </datafield>
+                <datafield tag="016" ind1="7" ind2=" ">
+                    <subfield code="a">bimoBNE19931205873</subfield>
+                    <subfield code="2">SpMaBN</subfield>
+                </datafield>
+                <datafield tag="019" ind1=" " ind2=" ">
+                    <subfield code="a">6567842</subfield>
+                    <subfield code="a">9987701</subfield>
+                    <subfield code="a">53095235</subfield>
+                    <subfield code="a">433981287</subfield>
+                </datafield>
+                <datafield tag="029" ind1="1" ind2=" ">
+                    <subfield code="a">IHI</subfield>
+                    <subfield code="c">/p114401coll4</subfield>
+                    <subfield code="t">CNTNT</subfield>
+                </datafield>
+                <datafield tag="029" ind1="1" ind2=" ">
+                    <subfield code="a">OCL</subfield>
+                    <subfield code="c">/p104301coll10</subfield>
+                    <subfield code="t">CNTNT</subfield>
+                </datafield>
+                <datafield tag="029" ind1="1" ind2=" ">
+                    <subfield code="a">OCL</subfield>
+                    <subfield code="c">/p16243coll3</subfield>
+                    <subfield code="t">CNTNT</subfield>
+                </datafield>
+                <datafield tag="035" ind1=" " ind2=" ">
+                    <subfield code="a">(OCoLC)1</subfield>
+                    <subfield code="z">(OCoLC)6567842</subfield>
+                    <subfield code="z">(OCoLC)9987701</subfield>
+                    <subfield code="z">(OCoLC)53095235</subfield>
+                    <subfield code="z">(OCoLC)433981287</subfield>
+                </datafield>
+                <datafield tag="042" ind1=" " ind2=" ">
+                    <subfield code="a">lcac</subfield>
+                </datafield>
+                <datafield tag="050" ind1="0" ind2="0">
+                    <subfield code="a">PZ5</subfield>
+                    <subfield code="b">.R1924</subfield>
+                </datafield>
+                <datafield tag="080" ind1=" " ind2=" ">
+                    <subfield code="a">821.111(73)-34"19"(082.2)</subfield>
+                </datafield>
+                <datafield tag="082" ind1="0" ind2="0">
+                    <subfield code="a">934</subfield>
+                </datafield>
+                <datafield tag="086" ind1="0" ind2=" ">
+                    <subfield code="a">C 55.8:R 24</subfield>
+                </datafield>
+                <datafield tag="086" ind1="0" ind2=" ">
+                    <subfield code="a">NS 1.2:P 27</subfield>
+                </datafield>
+                <datafield tag="049" ind1=" " ind2=" ">
+                    <subfield code="a">MAIN</subfield>
+                </datafield>
+                <datafield tag="245" ind1="0" ind2="4">
+                    <subfield code="a">The Rand McNally book of favorite pastimes /</subfield>
+                    <subfield code="c">illustrated by Dorothy Grider.</subfield>
+                </datafield>
+                <datafield tag="246" ind1="3" ind2="0">
+                    <subfield code="a">Favorite pastimes</subfield>
+                </datafield>
+                <datafield tag="260" ind1=" " ind2=" ">
+                    <subfield code="a">Chicago :</subfield>
+                    <subfield code="b">Rand McNally,</subfield>
+                    <subfield code="c">[1963]</subfield>
+                </datafield>
+                <datafield tag="300" ind1=" " ind2=" ">
+                    <subfield code="a">110 pages :</subfield>
+                    <subfield code="b">color illustrations ;</subfield>
+                    <subfield code="c">33 cm</subfield>
+                </datafield>
+                <datafield tag="336" ind1=" " ind2=" ">
+                    <subfield code="a">text</subfield>
+                    <subfield code="b">txt</subfield>
+                    <subfield code="2">rdacontent</subfield>
+                </datafield>
+                <datafield tag="337" ind1=" " ind2=" ">
+                    <subfield code="a">unmediated</subfield>
+                    <subfield code="b">n</subfield>
+                    <subfield code="2">rdamedia</subfield>
+                </datafield>
+                <datafield tag="338" ind1=" " ind2=" ">
+                    <subfield code="a">volume</subfield>
+                    <subfield code="b">nc</subfield>
+                    <subfield code="2">rdacarrier</subfield>
+                </datafield>
+                <datafield tag="505" ind1="0" ind2="0">
+                    <subfield code="t">Little ballerina /</subfield>
+                    <subfield code="r">by D. Grider --</subfield>
+                    <subfield code="t">Little horseman /</subfield>
+                    <subfield code="r">by M. Watts --</subfield>
+                    <subfield code="t">Little majorette /</subfield>
+                    <subfield code="r">by D. Grider --</subfield>
+                    <subfield code="t">Little swimmers /</subfield>
+                    <subfield code="r">by V. Hunter.</subfield>
+                </datafield>
+                <datafield tag="520" ind1=" " ind2=" ">
+                    <subfield code="a">Boys and girls in these four stories work hard to master ballet dancing, riding, baton twirling, and swimming.</subfield>
+                </datafield>
+                <datafield tag="650" ind1=" " ind2="0">
+                    <subfield code="a">Amusements</subfield>
+                    <subfield code="v">Juvenile fiction.</subfield>
+                </datafield>
+                <datafield tag="650" ind1=" " ind2="0">
+                    <subfield code="a">Ballet dancing</subfield>
+                    <subfield code="v">Juvenile fiction.</subfield>
+                </datafield>
+                <datafield tag="650" ind1=" " ind2="0">
+                    <subfield code="a">Horsemanship</subfield>
+                    <subfield code="v">Juvenile fiction.</subfield>
+                </datafield>
+                <datafield tag="650" ind1=" " ind2="0">
+                    <subfield code="a">Baton twirling</subfield>
+                    <subfield code="v">Juvenile fiction.</subfield>
+                </datafield>
+                <datafield tag="650" ind1=" " ind2="0">
+                    <subfield code="a">Swimming</subfield>
+                    <subfield code="v">Juvenile fiction.</subfield>
+                </datafield>
+                <datafield tag="650" ind1=" " ind2="0">
+                    <subfield code="a">Children's stories.</subfield>
+                </datafield>
+                <datafield tag="650" ind1=" " ind2="1">
+                    <subfield code="a">Short stories.</subfield>
+                </datafield>
+                <datafield tag="650" ind1=" " ind2="7">
+                    <subfield code="a">Cuentos norteamericanos</subfield>
+                    <subfield code="y">S. XX.</subfield>
+                    <subfield code="2">embne</subfield>
+                </datafield>
+                <datafield tag="650" ind1=" " ind2="7">
+                    <subfield code="a">Amusements.</subfield>
+                    <subfield code="2">fast</subfield>
+                    <subfield code="0">(OCoLC)fst00808105</subfield>
+                </datafield>
+                <datafield tag="650" ind1=" " ind2="7">
+                    <subfield code="a">Ballet dancing.</subfield>
+                    <subfield code="2">fast</subfield>
+                    <subfield code="0">(OCoLC)fst00826049</subfield>
+                </datafield>
+                <datafield tag="650" ind1=" " ind2="7">
+                    <subfield code="a">Baton twirling.</subfield>
+                    <subfield code="2">fast</subfield>
+                    <subfield code="0">(OCoLC)fst00828812</subfield>
+                </datafield>
+                <datafield tag="650" ind1=" " ind2="7">
+                    <subfield code="a">Children's stories.</subfield>
+                    <subfield code="2">fast</subfield>
+                    <subfield code="0">(OCoLC)fst00856632</subfield>
+                </datafield>
+                <datafield tag="650" ind1=" " ind2="7">
+                    <subfield code="a">Horsemanship.</subfield>
+                    <subfield code="2">fast</subfield>
+                    <subfield code="0">(OCoLC)fst00960561</subfield>
+                </datafield>
+                <datafield tag="650" ind1=" " ind2="7">
+                    <subfield code="a">Swimming.</subfield>
+                    <subfield code="2">fast</subfield>
+                    <subfield code="0">(OCoLC)fst01140328</subfield>
+                </datafield>
+                <datafield tag="655" ind1=" " ind2="0">
+                    <subfield code="a">Collection Bandes dessinées.</subfield>
+                </datafield>
+                <datafield tag="655" ind1=" " ind2="6">
+                    <subfield code="a">Bandes dessinées</subfield>
+                </datafield>
+                <datafield tag="655" ind1=" " ind2="7">
+                    <subfield code="a">Fiction.</subfield>
+                    <subfield code="2">fast</subfield>
+                    <subfield code="0">(OCoLC)fst01423787</subfield>
+                </datafield>
+                <datafield tag="655" ind1=" " ind2="7">
+                    <subfield code="a">Juvenile works.</subfield>
+                    <subfield code="2">fast</subfield>
+                    <subfield code="0">(OCoLC)fst01411637</subfield>
+                </datafield>
+                <datafield tag="655" ind1=" " ind2="7">
+                    <subfield code="a">Short stories.</subfield>
+                    <subfield code="2">fast</subfield>
+                    <subfield code="0">(OCoLC)fst01726740</subfield>
+                </datafield>
+                <datafield tag="655" ind1=" " ind2="7">
+                    <subfield code="a">Short stories.</subfield>
+                    <subfield code="2">lcgft</subfield>
+                </datafield>
+                <datafield tag="700" ind1="1" ind2=" ">
+                    <subfield code="a">Grider, Dorothy.</subfield>
+                    <subfield code="t">Little ballerina.</subfield>
+                </datafield>
+                <datafield tag="700" ind1="1" ind2=" ">
+                    <subfield code="a">Watts, Mabel.</subfield>
+                    <subfield code="t">Little horseman.</subfield>
+                </datafield>
+                <datafield tag="700" ind1="1" ind2=" ">
+                    <subfield code="a">Grider, Dorothy.</subfield>
+                    <subfield code="t">Little majorette.</subfield>
+                </datafield>
+                <datafield tag="700" ind1="1" ind2=" ">
+                    <subfield code="a">Hunter, Virginia,</subfield>
+                    <subfield code="d">1921-2011.</subfield>
+                    <subfield code="t">Little swimmers.</subfield>
+                </datafield>
+                <datafield tag="856" ind1="4" ind2="1">
+                    <subfield code="3">View Online</subfield>
+                    <subfield code="u">http://worldcat.org/oclc/1/viewonline</subfield>
+                </datafield>
+                <datafield tag="938" ind1=" " ind2=" ">
+                    <subfield code="a">Baker and Taylor</subfield>
+                    <subfield code="b">BTCP</subfield>
+                    <subfield code="n">63011276</subfield>
+                </datafield>
+            </record>
+        </response>
+    </content>
+    <id>http://worldcat.org/oclc/1</id>
+    <link href="http://worldcat.org/oclc/1"></link>
+</entry>
