@@ -36,7 +36,7 @@ $ npm run build
 $ npm run push-dist
 ```
 
-## Testing and developmentment
+## Testing and development
 
 ### Step 1: Clone the repository
 Clone this repository
