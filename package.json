@@ -12,7 +12,8 @@
     "gulp-concat": "^2.6.1",
     "gulp-copy": "^4.0.1",
     "gulp-expose": "0.0.7",
-    "mocha": "^5.2.0"
+    "mocha": "^5.2.0",
+    "sinon": "^9.0.2"
   },
   "scripts": {
     "test": "mocha",
