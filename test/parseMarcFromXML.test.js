@@ -1,21 +1,22 @@
 const expect = require('chai').expect;
 const fs = require('fs');
-const gas = require('gas-local');
-const mocks = require("./mocks/gas-mocks");
+const dom = require('xmldom').DOMParser
 
-const lib = gas.require('./src', mocks);
+const lib =require('../lib/marc-lib');
 
 bib_response = fs.readFileSync(require('path').resolve(__dirname, './mocks/bib.xml')).toString();
 no_bib_response = fs.readFileSync(require('path').resolve(__dirname, './mocks/no_bib.xml')).toString();
 
-describe.skip('Handle parsing a Atom with embedded MARC record', () => {
+describe.only('Handle parsing a Atom with embedded MARC record', () => {
 	it('Returns MARC XML', () => {	    
-		let record = lib.parseMarcFromXML(bib_response);
-		expect(bib).to.be.an("object");
+		let record = lib.parseMARCFromXML(bib_response);
+		expect(record).to.be.a("string");
+		var doc = new dom().parseFromString(record)
+		expect(doc).to.be.an('object')
 	});	
 	
 	it('Creates a handles bib which is an error', () => {		
-		let record = lib.parseMarcData(no_bib_response);
-		expect(record).to.be.an("object");
+		let record = lib.parseMARCFromXML(no_bib_response);
+		expect(record).to.be.a("undefined");
 	});
 });
