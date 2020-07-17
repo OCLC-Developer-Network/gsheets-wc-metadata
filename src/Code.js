@@ -72,46 +72,32 @@ function showDialog() {
 	      .showModalDialog(html, 'Enter API Credentials');
 	}
 
+function showAlert(message) {
+	var ui = SpreadsheetApp.getUi();
+	ui.alert(message);
+}
+
 function saveCredentials(form) {
-	   
-	   var ui = SpreadsheetApp.getUi();
-	   
 	   //MAKE SURE THE OCLC API KEY AND SECRET HAVE BEEN ENTERED
 	   let apiKey = form.apiKey;
 	   let secret = form.apiSecret;
 	   let institutionSymbol = form.institutionSymbol;
 	   if (apiKey == null || apiKey == "" || secret == null || secret == "" || institutionSymbol == null || institutionSymbol == "") {
-	     ui.alert("OCLC API Key, Secret and Institution Symbol are Required");
+		 showAlert("OCLC API Key, Secret and Institution Symbol are Required");
 	     return;
 	   }
 	   PropertiesService.getUserProperties().setProperty('apiKey', apiKey);
 	   PropertiesService.getUserProperties().setProperty('secret', secret);   
 	   PropertiesService.getUserProperties().setProperty('institutionSymbol', institutionSymbol);
-	   
-	   let service = OAuth2.createService('WorldCat Search API')
-		   // Set the endpoint URLs.
-		   .setTokenUrl('https://oauth.oclc.org/token')
-		
-		   // Set the client ID and secret.
-		   .setClientId(apiKey)
-		   .setClientSecret(secret)
-		
-		   // Sets the custom grant type to use.
-		   .setGrantType('client_credentials')
-		   .setScope('wcapi')
-		
-		   // Set the property store where authorized tokens should be persisted.
-		   .setPropertyStore(PropertiesService.getUserProperties());
-	   PropertiesService.getUserProperties().setProperty('service', service);
-}
+	 }
 
-function getConfig() {
-    let config = new Object();
-	config.apiKey = PropertiesService.getUserProperties().getProperty('apiKey')
-    config.apiSecret = PropertiesService.getUserProperties().getProperty('secret')
-    config.institutionSymbol = PropertiesService.getUserProperties().getProperty('institutionSymbol')
-    return config;
-}
+	function getConfig() {
+	    let config = new Object();
+		config.apiKey = PropertiesService.getUserProperties().getProperty('apiKey')
+	    config.apiSecret = PropertiesService.getUserProperties().getProperty('secret')
+	    config.institutionSymbol = PropertiesService.getUserProperties().getProperty('institutionSymbol')
+	    return config;
+	}
 
 /**
  * Reset the authorization state, so that it can be re-tested.
@@ -124,8 +110,22 @@ function reset() {
  * Configures the service.
  */
 function getService() {
-	return PropertiesService.getUserProperties().getProperty('service')
-}
+	   let service = OAuth2.createService('WorldCat Search API')
+	   // Set the endpoint URLs.
+	   .setTokenUrl('https://oauth.oclc.org/token')
+
+	   // Set the client ID and secret.
+	   .setClientId(PropertiesService.getUserProperties().getProperty('apiKey'))
+	   .setClientSecret(PropertiesService.getUserProperties().getProperty('secret'))
+
+	   // Sets the custom grant type to use.
+	   .setGrantType('client_credentials')
+	   .setScope('wcapi')
+
+	   // Set the property store where authorized tokens should be persisted.
+	   .setPropertyStore(PropertiesService.getUserProperties());	
+	   return service
+	}
 
 function fillCurrentOCLCNumber(){
 
