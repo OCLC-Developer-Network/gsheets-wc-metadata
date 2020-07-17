@@ -19,49 +19,6 @@ function createRequestURL(functionName, oclcNumber, filterType, filterValue) {
 	return url
 }
 
-function nsResolver(prefix) {
-	  var ns = {
-			  "atom": "http://www.w3.org/2005/Atom",
-			  "rb": "http://worldcat.org/rb",
-			  "marc": "http://www.loc.gov/MARC21/slim"
-			};
-	  return ns[prefix] || null;
-}
-
-function parseMARCFromXML(responseXML){
-	var result = new DOMParser().parseFromString(responseXML, "application/xml");
-	
-    var entries = result.documentElement.getElementsByTagNameNS(nsResolver('atom'), 'content');
-    var content = entries[0].getElementsByTagNameNS(nsResolver('rb'),'response').getElementsByTagNameNS(nsResolver('marc'),'record');
-    var xml = content.serializeToString();
-    return xml
-}
-
-function parseMarcData(data){
-	var doc = new DOMParser().parseFromString(record, "application/xml");
-	
-	let oclcNumber = doc.evaluate("//marc:controlfield[@tag='001']", doc, nsResolver, XPathResult.ANY_TYPE, null)[0].firstChild.data;
-   
-	    
-	let title = doc.evaluate("//marc:datafield[starts-with(@tag, '24')]/marc:subfield[@code='a']", doc, nsResolver, XPathResult.ANY_TYPE, null)[0].firstChild.data
-	    
-	let author = doc.evaluate("//marc:datafield[@tag='100'or @tag='110'or @tag='700' or @tag='710']/marc:subfield[@code='a']", doc, nsResolver, XPathResult.ANY_TYPE, null)[0].firstChild.data  
-	
-	//let isbnListNodes = doc.evaluate("//marc:datafield[@tag='020']/marc:subfield[@tag='a']", doc, nsResolver, XPathResult.ANY_TYPE, null)
-	
-	//let isbnList = [];
-	//while(node = isbnListNodes.iterateNext()) {
-	//	isbnList.push(node.firstChild.data);
-	//}
-	    
-	let bib = new Object(); 
-	bib.oclcNumber = oclcNumber
-	bib.title =  title
-	bib.author = author
-	//bib.isbns = isbnList.join(', ')
-	return bib;
-}
-
 function parseBasicMetadata(result) {
 	let record = JSON.parse(result);	
 	
